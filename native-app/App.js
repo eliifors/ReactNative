@@ -1,25 +1,25 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View, Button, SafeAreaView } from "react-native";
+import * as React from "react";
+import { View, Text } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+//screens
+import HomeScreen from "./src/screens/Home";
+import UsersScreen from "./src/screens/Users";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [name, setName] = useState("Elif");
-  const [age, setAge] = useState(22);
-
   return (
-    <SafeAreaView style={styles.container}>
-      <Text>İsim: {name}</Text>
-      <Text>Yaş: {age}</Text>
-      <Button title="İsmi Değiştir" onPress={() => setName("Kerem")} />
-      <Button title="Yaşı Değiştir" onPress={() => setAge(25)} />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Users">
+        <Stack.Screen name="Home" component={HomeScreen} options={"Anasayfa"} />
+        <Stack.Screen
+          name="Users"
+          component={UsersScreen}
+          options={"Kullanıcılar"}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
