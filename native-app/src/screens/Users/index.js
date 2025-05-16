@@ -15,8 +15,8 @@ const data = [
   },
   {
     id: 3,
-    name: "Ali",
-    surname: "Yılmaz",
+    name: "Melisa",
+    surname: "Şimşek",
   },
   {
     id: 4,
@@ -41,7 +41,7 @@ const UsersScreen = ({ navigation }) => {
       <FlatList
         data={data}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <Item item={item} />}
+        renderItem={({ item }) => <Item item={item} navigation={navigation} />}
       />
     </View>
   );
