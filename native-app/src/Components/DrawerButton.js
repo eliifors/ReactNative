@@ -1,4 +1,4 @@
-import { Touchable } from "react-native";
+import { TouchableOpacity } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";

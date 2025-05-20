@@ -18,6 +18,7 @@ const DrawerNavigator = () => {
         },
       }}
       // <drawerContent={()=> <DrawerContent />}
+      initialRouteName="UsersDrawer"
     >
       <Drawer.Screen name="HomeDrawer" component={TabNavigator} />
       <Drawer.Screen name="UsersDrawer" component={UsersStackNavigator} />
