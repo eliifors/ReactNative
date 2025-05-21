@@ -25,14 +25,28 @@ const UserDetail = ({ route, navigation }) => {
   }, [navigation]);
 
   useEffect(() => {
-    axios(`https://jsonplaceholder.typicode.com/users/${userId}`)
-      .then((res) => setUser(res.data))
-      .catch((err) => {
-        setError(err.message);
-        console.error(err);
-      })
-      .finally(() => setLoading(false));
+    // axios(`https://jsonplaceholder.typicode.com/users/${userId}`)
+    //   .then((res) => setUser(res.data))
+    //   .catch((err) => {
+    //     setError(err.message);
+    //     console.error(err);
+    //   })
+    //   .finally(() => setLoading(false));
+    getData();
   }, [userId]);
+
+  const getData = async () => {
+    try {
+      const { data } = await axios(
+        `https://jsonplaceholder.typicode.com/users/${userId}`
+      );
+      setUser(data);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   if (loading) {
     return;

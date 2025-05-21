@@ -24,9 +24,16 @@ const UsersScreen = ({ navigation }) => {
   }, []);
 
   const getData = async () => {
-    const { data } = await axios("https://jsonplaceholder.typicode.com/users");
-    setUsers(data);
-    setLoading(false);
+    try {
+      const { data } = await axios(
+        "https://jsonplaceholder.typicode.com/users"
+      );
+      setUsers(data);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (loading) {
