@@ -2,6 +2,16 @@ import * as React from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 
 function HomeScreen({ navigation }) {
+  const [count, setCount] = useState(0);
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <Button onPress={() => setCount((c) => c + 1)} title="Update count" />
+      ),
+    });
+  }, [navigation]);
+
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Home Screen</Text>
