@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import Form from "./components/Form";
+import Form from "./src/components/Form";
 
 export default function App() {
   return (
