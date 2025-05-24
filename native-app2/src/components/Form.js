@@ -1,15 +1,55 @@
 import { View, Text, TextInput, StyleSheet, Button } from "react-native";
-import React from "react";
+import React, { use } from "react";
 import { useState } from "react";
 
 const Form = () => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [form, setForm] = useState({
+    username: "",
+    email: "",
+    password: "",
+    passwordConfirm: "",
+  });
+
+  // const [username, setUsername] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [passwordConfirm, setPasswordConfirm] = useState("");
+
+  // const handleSubmit = () => {
+  //   console.log({ username, email, password, passwordConfirm });
+  // };
 
   const handleSubmit = () => {
-    
+    if (!form.username) {
+      alert("Username is required");
+      return;
+    }
+    if (!form.email) {
+      alert("E-mail is required");
+      return;
+    }
+    if (!form.password) {
+      alert("Password is required");
+      return;
+    }
+    if (form.password !== form.passwordConfirm || !form.passwordConfirm) {
+      alert("Passwords do not match");
+      return;
+    }
+    console.log({
+      username: form.username,
+      email: form.email,
+      password: form.password,
+      passwordConfirm: form.passwordConfirm,
+    });
+  };
+
+  const handleChange = (text, input) => {
+    setForm((prev) => ({
+      ...prev,
+      [input]: text,
+    }));
+  };
 
   return (
     <View style={styles.container}>
@@ -17,17 +57,19 @@ const Form = () => {
         <TextInput
           style={styles.input}
           placeholder="Username"
-          value={username}
-          onChangeText={(text) => setUsername(text)}
+          value={form.username}
+          onChangeText={(text) => handleChange(text, "username")}
         ></TextInput>
       </View>
 
       <View style={styles.item}>
         <TextInput
           style={styles.input}
+          keyboardType="email-address"
+          autoCapitalize="none"
           placeholder="E-mail"
-          value={email}
-          onChangeText={(text) => setEmail(text)}
+          value={form.email}
+          onChangeText={(text) => handleChange(text, "email")}
         ></TextInput>
       </View>
 
@@ -36,8 +78,8 @@ const Form = () => {
           style={styles.input}
           placeholder="Password"
           secureTextEntry={true}
-          value={password}
-          onChangeText={(text) => setPassword(text)}
+          value={form.password}
+          onChangeText={(text) => handleChange(text, "password")}
         ></TextInput>
       </View>
 
@@ -46,8 +88,8 @@ const Form = () => {
           style={styles.input}
           placeholder="Password Confirm"
           secureTextEntry={true}
-          value={passwordConfirm}
-          onChangeText={(text) => setPasswordConfirm(text)}
+          value={form.passwordConfirm}
+          onChangeText={(text) => handleChange(text, "passwordConfirm")}
         ></TextInput>
       </View>
 
