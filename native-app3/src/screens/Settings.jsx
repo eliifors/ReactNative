@@ -1,15 +1,16 @@
-import { View, Text } from "react-native";
-import React from "react";
-import { useContext } from "react";
+import { View, Text, Button } from "react-native";
+import React, { useContext, useState } from "react";
 import ThemeContext from "../context/ThemeContext";
 
-const About = () => {
-  const data = useContext(ThemeContext);
+const Settings = () => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Active Theme : {data}</Text>
+      <Text>Active Theme : {theme}</Text>
+      <Button title="Toggle Theme" onPress={toggleTheme} />
     </View>
   );
 };
 
-export default About;
+export default Settings;
