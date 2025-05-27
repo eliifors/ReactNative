@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import React, { createContext, useState } from "react";
 
 const ThemeContext = createContext();
 
@@ -9,10 +9,7 @@ export const ThemeProvider = ({ children }) => {
     setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
   };
 
-  const values = {
-    theme,
-    toggleTheme,
-  };
+  const values = { theme, toggleTheme };
 
   return (
     <ThemeContext.Provider value={values}>{children}</ThemeContext.Provider>

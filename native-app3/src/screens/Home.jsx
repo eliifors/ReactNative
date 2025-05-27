@@ -7,7 +7,9 @@ const Home = ({ navigation }) => {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>Active Theme : {theme}</Text>
-      <Button title="Toggle Theme" onPress={toggleTheme} />
+      <View style={{ marginBottom: 10 }}>
+        <Button title="Toggle Theme" onPress={toggleTheme} />
+      </View>
       <Button
         title="Go to Settings"
         onPress={() => navigation.navigate("Settings")}
