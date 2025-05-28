@@ -1,16 +1,16 @@
 // App.js
 import React from "react";
-import ThemeContextProvider from "./src/context/ThemeContext";
+import { ThemeContextProvider } from "./src/context/ThemeContext";
 import Router from "./src/Router";
-import LangContext from "./src/context/LangContext";
+import { LangProvider } from "./src/context/LangContext"; // <-- import LangProvider
 
 function App() {
   return (
-    <LangContext.Provider>
+    <LangProvider>
       <ThemeContextProvider>
         <Router />
       </ThemeContextProvider>
-    </LangContext.Provider>
+    </LangProvider>
   );
 }
 
