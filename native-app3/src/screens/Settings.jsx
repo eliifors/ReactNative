@@ -1,11 +1,11 @@
 import { View, Text, Button, StyleSheet } from "react-native";
-import React, { useContext } from "react";
-import ThemeContext from "../context/ThemeContext";
-import LangContext from "../context/LangContext";
+import React from "react";
+import { useTheme } from "../context/ThemeContext";
+import { useLang } from "../context/LangContext";
 
 const Settings = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
-  const { lang, setLang } = useContext(LangContext);
+  const { theme, toggleTheme } = useTheme();
+  const { lang, setLang } = useLang();
 
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -26,10 +26,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     marginBottom: 10,
-  },
-  buttons: {
-    flexDirection: "row",
-    marginTop: 20,
   },
 });
 
